@@ -11,25 +11,20 @@ class AppTheme {
 
   FluentThemeData getThemeData() {
     return FluentThemeData(
-
       typography: Typography.fromBrightness(
         brightness: appColorScheme.brightness,
-        
       ),
       brightness: appColorScheme.brightness,
       scaffoldBackgroundColor: appColorScheme.shapeColors.backgroundColor,
       cardColor: appColorScheme.shapeColors.cardColor,
       toggleSwitchTheme: ToggleSwitchThemeData(),
       accentColor: AccentColor(
-        appColorScheme.primaryColor
-            .toString()
-            .split("Color(0xff")
-            .last
-            .split(")")
-            .first,
-        {},
+        'primary',
+        {
+          'primary': appColorScheme.primaryColor,
+          'normal': appColorScheme.primaryColor
+        },
       ),
-      
     );
   }
 }

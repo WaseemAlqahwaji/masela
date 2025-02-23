@@ -15,6 +15,7 @@ class _MaselaAppState extends State<MaselaApp> {
   Widget build(BuildContext context) {
     return FluentApp(
       title: 'Masela',
+      debugShowCheckedModeBanner: false,
       theme: AppTheme(AppLightColor()).getThemeData(),
       home: MainScreen(),
       builder: (context, child) {

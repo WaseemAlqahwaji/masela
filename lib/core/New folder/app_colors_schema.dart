@@ -11,7 +11,7 @@ abstract class AppColorScheme {
 
   ShapeColors get shapeColors;
 
-  MainColor get primaryColor => MainColor(0xffDB9107, {});
+  MainColor get primaryColor => MainColor(0xffC58A05, {});
 }
 
 class AppLightColor extends AppColorScheme {
