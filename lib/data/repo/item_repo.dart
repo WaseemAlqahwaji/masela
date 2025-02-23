@@ -1,4 +1,6 @@
+import 'dart:io';
 
+import 'package:masela/core/file_util.dart';
 
 import '../../core/database_helper.dart';
 import '../model/item.dart';
@@ -10,6 +12,8 @@ class ItemRepository {
 
   Future<int> createItem(Item item) async {
     final db = await databaseHelper.database;
+    String p = await FileUtil.saveImage(image: File(item.imagePath));
+    item.imagePath = p;
     return await db.insert('items', item.toMap());
   }
 
@@ -21,6 +25,21 @@ class ItemRepository {
 
   Future<int> updateItem(Item item) async {
     final db = await databaseHelper.database;
+    String path = (await db.query(
+      'items',
+      where: 'id = ?',
+      whereArgs: [item.id!],
+    ))
+        .first['image_path']
+        .toString();
+    if (path != item.imagePath) {
+      await FileUtil.delete(
+        path: path,
+      );
+      String p = await FileUtil.saveImage(image: File(item.imagePath));
+      item.imagePath = p;
+    }
+
     return await db.update(
       'items',
       item.toMap(),
@@ -31,6 +50,10 @@ class ItemRepository {
 
   Future<int> deleteItem(int id) async {
     final db = await databaseHelper.database;
+    String path = (await db.query('items', where: 'id = ?', whereArgs: [id]))
+        .first['image_path']
+        .toString();
+    await FileUtil.delete(path: path);
     return await db.delete(
       'items',
       where: 'id = ?',

@@ -1,9 +1,10 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:masela/logic/cubit/page_cubit.dart';
+import 'package:masela/pages/items_page/items_page.dart' show ItemsPage;
+import 'package:masela/pages/services/services_page.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-import '../../widgets/horizontal_card.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -32,24 +33,13 @@ class MainScreen extends StatelessWidget {
               icon: SizedBox.shrink(),
             ),
             PaneItem(
-              title: Text("إدارة الأصناف"),
-              body: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                child: Column(
-                  children: [
-                    HorizontalCard(title: 'title', actions: [
-                      Button(child: Text('إضافة'), onPressed: () {}),
-                      Button(child: Text('إضافة'), onPressed: () {}),
-                    ]),
-                  ],
-                ),
-              ),
+              title: Text("إدارة الخدمات"),
+              body: ServicesPage(),
               icon: SizedBox.shrink(),
             ),
             PaneItem(
-              title: Text("Home"),
-              body: Container(),
+              title: Text("إدارة الأصناف"),
+              body: ItemsPage(),
               icon: SizedBox.shrink(),
             ),
           ],
