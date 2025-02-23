@@ -4,7 +4,10 @@ import 'package:masela/data/model/item.dart';
 import 'package:masela/data/model/meal.dart';
 import 'package:masela/logic/cubit/page_cubit.dart';
 import 'package:masela/pages/host_screen/host_screen.dart';
+import 'package:masela/pages/items_page/items_page.dart' show ItemsPage;
+import 'package:masela/pages/services/services_page.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -19,6 +22,14 @@ class MainScreen extends StatelessWidget {
           },
           selected: page,
           items: [
+            PaneItem(
+              title: Text("Home"),
+              body: SfCalendar(
+                view: CalendarView.month,
+                monthViewSettings: MonthViewSettings(showAgenda: true),
+              ),
+              icon: SizedBox.shrink(),
+            ),
             PaneItem(
               title: Text("Home"),
               body: SfCalendar(
@@ -84,19 +95,13 @@ class MainScreen extends StatelessWidget {
               icon: SizedBox.shrink(),
             ),
             PaneItem(
-              title: Text("Home"),
-              body: Container(),
+              title: Text("إدارة الخدمات"),
+              body: ServicesPage(),
               icon: SizedBox.shrink(),
             ),
             PaneItem(
               title: Text("إدارة الأصناف"),
-              body: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                child: Column(
-                  children: [],
-                ),
-              ),
+              body: ItemsPage(),
               icon: SizedBox.shrink(),
             ),
           ],

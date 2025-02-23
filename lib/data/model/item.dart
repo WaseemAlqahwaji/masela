@@ -1,7 +1,7 @@
 class Item {
-  final int? id;
-  final String name;
-  final String imagePath;
+   int? id;
+   String name;
+   String imagePath;
 
   Item({
     this.id,

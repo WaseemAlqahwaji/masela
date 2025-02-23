@@ -29,11 +29,13 @@ class _HorizontalCardState extends State<HorizontalCard> {
       ),
       child: Row(
         children: [
-          Text(
-            widget.title,
-            style: FluentTheme.of(context).typography.bodyLarge,
+          Expanded(
+            child: Text(
+              widget.title,
+              style: FluentTheme.of(context).typography.bodyLarge,
+            ),
           ),
-          const Spacer(),
+          8.width(),
           for (var e in widget.actions) ...[
             e,
            8.width(),

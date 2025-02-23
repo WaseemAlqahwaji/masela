@@ -1,12 +1,12 @@
 class Service {
-  final int? id;
-  final String name;
-  final int unitCount;
+   int? id;
+   String name;
+   int unitCount;
 
   Service({
     this.id,
     required this.name,
-    required this.unitCount,
+    this.unitCount = 0,
   });
 
   Map<String, dynamic> toMap() => {
