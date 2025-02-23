@@ -1,10 +1,10 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:masela/core/sizer.dart';
-import 'package:masela/data/model/service.dart';
+import 'package:masela/data/model/item.dart';
+import 'package:masela/logic/cubit/items_cubit.dart';
 import 'package:masela/logic/cubit/services_cubit.dart';
-import 'package:masela/pages/services/add_edit_service_dialog.dart';
-import 'package:masela/widgets/horizontal_card.dart';
+import 'package:masela/pages/items_page/add_edit_item_dialog.dart';
+import 'package:masela/widgets/image_card.dart';
 
 class ItemsPage extends StatefulWidget {
   const ItemsPage({super.key});
@@ -32,36 +32,34 @@ class _ItemsPageState extends State<ItemsPage> {
             onPressed: () {
               showDialog(
                 context: context,
-                builder: (context) => AddEditServiceDialog(),
+                builder: (context) => AddEditItemDialog(),
                 barrierDismissible: true,
               );
             }),
       ),
-      content:
-      BlocBuilder<ServicesCubit, List<Service>>(builder: (context, state) {
+      content: BlocBuilder<ItemsCubit, List<Item>>(builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: ListView.separated(
-              separatorBuilder: (context, state) => 8.height(),
+          child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 260,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 8,
+                mainAxisExtent: 260,
+              ),
               itemCount: state.length,
-              itemBuilder: (context, index) {
-                return HorizontalCard(title: state[index].name, actions: [
-                  Button(
-                      child: Text('تعديل'),
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) => AddEditServiceDialog(
-                            service: state[index],
-                          ),
-                        );
-                      }),
-                  Button(
-                      child: Text('حذف'),
-                      onPressed: () {
-                        context.read<ServicesCubit>().delete(state[index].id!);
-                      }),
-                ]);
+              itemBuilder: (context, i) {
+                return GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: true,
+                        builder: (context) => AddEditItemDialog(
+                          item: state[i],
+                        ),
+                      );
+                    },
+                    child: ImageCard(item: state[i]));
               }),
         );
       }),

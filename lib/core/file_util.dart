@@ -3,9 +3,11 @@ import 'dart:io';
 class FileUtil {
   static Future<String> saveImage({required File image}) async {
     final String userPath = Platform.environment['USERPROFILE']!;
-    final dbPath = '$userPath/appData/local/masela/photos';
-    String p = '$dbPath/${DateTime.now().microsecond}.png';
-    await File(p).writeAsBytes(image.readAsBytesSync());
+    final dbPath = '$userPath\\appData\\local\\masela\\photos';
+    String p = '$dbPath\\${DateTime.now().microsecondsSinceEpoch}.png';
+    File file = File(p);
+    await file.create(recursive: true);
+    await file.writeAsBytes(image.readAsBytesSync());
     return p;
   }
 

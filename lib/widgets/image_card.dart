@@ -33,12 +33,14 @@ class _ImageCardState extends State<ImageCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(4),
-              child: ImageWidget(
-                width: 143,
-                height: 125,
-                file: file,
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: ImageWidget(
+                  width: double.infinity,
+                  height: double.infinity,
+                  file: File(widget.item.imagePath),
+                ),
               ),
             ),
             8.height(),
