@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:masela/logic/cubit/items_cubit.dart';
 import 'package:masela/logic/cubit/page_cubit.dart';
 import 'package:masela/logic/cubit/services_cubit.dart';
 import 'package:masela/pages/main_screen/main_screen.dart';
@@ -30,6 +31,9 @@ class _MaselaAppState extends State<MaselaApp> {
             ),
             BlocProvider<ServicesCubit>(
               create: (context) => ServicesCubit(),
+            ),
+            BlocProvider<ItemsCubit>(
+              create: (context) => ItemsCubit(),
             ),
           ],
           child: MediaQuery.withClampedTextScaling(

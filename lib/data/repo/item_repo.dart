@@ -6,25 +6,23 @@ import '../../core/database_helper.dart';
 import '../model/item.dart';
 
 class ItemRepository {
-  final DatabaseHelper databaseHelper;
-
-  ItemRepository({required this.databaseHelper});
-
   Future<int> createItem(Item item) async {
-    final db = await databaseHelper.database;
+    final db = await DatabaseHelper.instance.database;
     String p = await FileUtil.saveImage(image: File(item.imagePath));
     item.imagePath = p;
     return await db.insert('items', item.toMap());
   }
 
   Future<List<Item>> getAllItems() async {
-    final db = await databaseHelper.database;
+    final db = await DatabaseHelper.instance.database;
+
     final result = await db.query('items');
     return result.map((map) => Item.fromMap(map)).toList();
   }
 
   Future<int> updateItem(Item item) async {
-    final db = await databaseHelper.database;
+    final db = await DatabaseHelper.instance.database;
+
     String path = (await db.query(
       'items',
       where: 'id = ?',
@@ -48,8 +46,21 @@ class ItemRepository {
     );
   }
 
+  Future<int> add(Item item) async {
+    final db = await DatabaseHelper.instance.database;
+
+    String p = await FileUtil.saveImage(image: File(item.imagePath));
+    item.imagePath = p;
+
+    return await db.insert(
+      'items',
+      item.toMap(),
+    );
+  }
+
   Future<int> deleteItem(int id) async {
-    final db = await databaseHelper.database;
+    final db = await DatabaseHelper.instance.database;
+
     String path = (await db.query('items', where: 'id = ?', whereArgs: [id]))
         .first['image_path']
         .toString();
