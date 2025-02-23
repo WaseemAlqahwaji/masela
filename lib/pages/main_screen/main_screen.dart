@@ -8,7 +8,6 @@ import 'package:masela/pages/items_page/items_page.dart' show ItemsPage;
 import 'package:masela/pages/services/services_page.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
@@ -22,14 +21,6 @@ class MainScreen extends StatelessWidget {
           },
           selected: page,
           items: [
-            PaneItem(
-              title: Text("Home"),
-              body: SfCalendar(
-                view: CalendarView.month,
-                monthViewSettings: MonthViewSettings(showAgenda: true),
-              ),
-              icon: SizedBox.shrink(),
-            ),
             PaneItem(
               title: Text("Home"),
               body: SfCalendar(
@@ -90,6 +81,12 @@ class MainScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+                  Meal(
+                    name: "وجبة 1",
+                    hasItems: false,
+                    hasAppetizers: true,
+                    items: [],
+                  )
                 ],
               ),
               icon: SizedBox.shrink(),

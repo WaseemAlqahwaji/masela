@@ -58,7 +58,10 @@ class _ImageWidgetState extends State<ImageWidget> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: widget.file == null
-                      ? Icon(Icons.add_a_photo)
+                      ? Image.asset(
+                          "assets/images/item_place_holder.png",
+                          fit: BoxFit.cover,
+                        )
                       : Image.file(
                           widget.file!,
                           fit: BoxFit.cover,

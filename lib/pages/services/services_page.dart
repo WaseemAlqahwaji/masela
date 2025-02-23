@@ -37,16 +37,18 @@ class _ServicesPageState extends State<ServicesPage> {
               );
             }),
       ),
-      content:
-          BlocBuilder<ServicesCubit, List<Service>>(builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: ListView.separated(
+      content: BlocBuilder<ServicesCubit, List<Service>>(
+        builder: (context, state) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: ListView.separated(
               separatorBuilder: (context, state) => 8.height(),
               itemCount: state.length,
               itemBuilder: (context, index) {
-                return HorizontalCard(title: state[index].name, actions: [
-                  Button(
+                return HorizontalCard(
+                  title: state[index].name,
+                  actions: [
+                    Button(
                       child: Text('تعديل'),
                       onPressed: () {
                         showDialog(
@@ -55,16 +57,21 @@ class _ServicesPageState extends State<ServicesPage> {
                             service: state[index],
                           ),
                         );
-                      }),
-                  Button(
+                      },
+                    ),
+                    Button(
                       child: Text('حذف'),
                       onPressed: () {
                         context.read<ServicesCubit>().delete(state[index].id!);
-                      }),
-                ]);
-              }),
-        );
-      }),
+                      },
+                    ),
+                  ],
+                );
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 }
