@@ -1,9 +1,10 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:masela/data/model/item.dart';
+import 'package:masela/data/model/meal.dart';
 import 'package:masela/logic/cubit/page_cubit.dart';
+import 'package:masela/pages/host_screen/host_screen.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-
-import '../../widgets/horizontal_card.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -27,6 +28,62 @@ class MainScreen extends StatelessWidget {
               icon: SizedBox.shrink(),
             ),
             PaneItem(
+              title: Text("إدارة الضيافة"),
+              body: HostScreen(
+                meals: [
+                  Meal(
+                    name: 'وجبة 1',
+                    id: 1,
+                    hasAppetizers: true,
+                    hasItems: true,
+                    items: [
+                      Item(
+                        name: "item 1",
+                        imagePath: "image",
+                      ),
+                      Item(
+                        name: "item 1",
+                        imagePath: "image",
+                      ),
+                      Item(
+                        name: "item 1",
+                        imagePath: "image",
+                      ),
+                      Item(
+                        name: "item 1",
+                        imagePath: "image",
+                      ),
+                      Item(
+                        name: "item 1",
+                        imagePath: "image",
+                      ),
+                      Item(
+                        name: "item 1",
+                        imagePath: "image",
+                      ),
+                      Item(
+                        name: "item 1",
+                        imagePath: "image",
+                      ),
+                      Item(
+                        name: "item 1",
+                        imagePath: "image",
+                      ),
+                      Item(
+                        name: "item 1",
+                        imagePath: "image",
+                      ),
+                      Item(
+                        name: "item 1",
+                        imagePath: "image",
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              icon: SizedBox.shrink(),
+            ),
+            PaneItem(
               title: Text("Home"),
               body: Container(),
               icon: SizedBox.shrink(),
@@ -37,19 +94,9 @@ class MainScreen extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 child: Column(
-                  children: [
-                    HorizontalCard(title: 'title', actions: [
-                      Button(child: Text('إضافة'), onPressed: () {}),
-                      Button(child: Text('إضافة'), onPressed: () {}),
-                    ]),
-                  ],
+                  children: [],
                 ),
               ),
-              icon: SizedBox.shrink(),
-            ),
-            PaneItem(
-              title: Text("Home"),
-              body: Container(),
               icon: SizedBox.shrink(),
             ),
           ],

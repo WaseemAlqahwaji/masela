@@ -102,10 +102,11 @@ class TextColors {
 }
 
 class ShapeColors {
-  MainColor backgroundColor, cardColor, dividerColor, iconColor;
+  MainColor backgroundColor, cardColor, dividerColor, iconColor,cardBorderColor;
 
   ShapeColors({
     required this.backgroundColor,
+    required this.cardBorderColor,
     required this.dividerColor,
     required this.cardColor,
     required this.iconColor,

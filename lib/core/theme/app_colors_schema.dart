@@ -38,5 +38,6 @@ class AppLightColor extends AppColorScheme {
         dividerColor: MainColor(0xffEBEBEB, {}),
         cardColor: MainColor(0xffFBFBFB, {}),
         iconColor: MainColor(0xff1A1A1A, {}),
+        cardBorderColor: MainColor(0xffE2E2E2, {}),
       );
 }
