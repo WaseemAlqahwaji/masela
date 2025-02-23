@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return FluentApp(
       title: 'Flutter Demo',
-      theme: FluentThemeData(),
+      theme: FluentThemeData(
+      ),
       home: const Screen(),
     );
   }
