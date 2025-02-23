@@ -9,7 +9,7 @@ class AppTheme {
 
   AppColorScheme get appColorScheme => _appColorScheme;
 
-  FluentThemeData getThemeData(BuildContext context) {
+  FluentThemeData getThemeData() {
     return FluentThemeData(
 
       typography: Typography.fromBrightness(

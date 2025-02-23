@@ -40,7 +40,7 @@ class DatabaseHelper {
     }
     _database = null;
     _databasePath = null;
-    print('Database deleted successfully');
+
   }
 
   Future<void> _createDB(Database db, int version) async {
