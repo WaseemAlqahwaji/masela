@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:masela/core/New%20folder/app_colors_schema.dart';
 import 'package:masela/core/New%20folder/app_theme.dart';
 import 'package:masela/logic/cubit/page_cubit.dart';
-import 'package:masela/main_screen.dart';
+import 'package:masela/pages/main_screen/main_screen.dart';
 
 class MaselaApp extends StatefulWidget {
   const MaselaApp({super.key});
